@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b172b">
+  <meta name="description" content="Mostra digital dos folders e vídeos do evento A anatomia da vida saudável. MUDI/UEM, 8 e 15 de novembro de 2026, das 14h às 17h.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MUDI em Movimento">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="preload" href="./assets/01-whey-protein.png" as="image">
+  <link rel="stylesheet" href="./styles.css">
+  <title>MUDI em Movimento | A anatomia da vida saudável</title>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true"><span class="orbit orbit-a"></span><span class="orbit orbit-b"></span><span class="stars"></span></div>
+  <div class="site-wrap">
+    <header class="site-header">
+      <a class="brand" href="./" aria-label="MUDI em Movimento, início">
+        <span class="brand-icon">M<span class="brand-spark"></span></span>
+        <span class="brand-copy"><strong>MUDI <i>em movimento</i></strong><small>Universidade Estadual de Maringá</small></span>
+      </a>
+      <div class="header-actions">
+        <span class="date-pill"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4M17 3v4M3 10h18"/></svg><span>8 e 15 NOV <b>•</b> 14h–17h</span></span>
+        <button class="icon-button" id="shareBtn" type="button" aria-label="Compartilhar o aplicativo" title="Compartilhar"><svg viewBox="0 0 24 24"><path d="M12 16V3m0 0L7 8m5-5l5 5M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg></button>
+        <button class="install-button" id="installBtn" type="button"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 17v3h16v-3"/></svg><span>Instalar app</span></button>
+      </div>
+    </header>
+    <section class="intro" aria-labelledby="pageTitle">
+      <div class="intro-copy">
+        <p class="eyebrow"><span class="live-dot"></span> MOSTRA DIGITAL DE DIVULGAÇÃO CIENTÍFICA</p>
+        <h1 id="pageTitle">A anatomia da <span>vida saudável.</span></h1>
+        <p class="subtitle">Uma substância, muitos caminhos. Explore os folders e vídeos do evento em uma apresentação interativa.</p>
+      </div>
+      <div class="intro-stat" aria-label="6 folders e 3 vídeos"><strong>06 <span>+</span> 03</strong><small>FOLDERS <span>·</span> VÍDEOS</small></div>
+    </section>
+    <main class="main-grid">
+      <section class="viewer" aria-label="Apresentação dos materiais">
+        <div class="viewer-top">
+          <div><span class="label-light">AGORA EM EXIBIÇÃO</span><h2 id="currentTitle">Whey protein e músculos</h2></div>
+          <div class="viewer-counter"><span id="slideNumber">01</span><span class="counter-sep">/</span><span id="slideTotal">09</span></div>
+        </div>
+        <div class="stage" id="stage" tabindex="0" aria-label="Área de apresentação. Deslize para trocar de material.">
+          <div class="stage-backdrop" id="stageBackdrop" aria-hidden="true"></div>
+          <div class="stage-grid" aria-hidden="true"></div>
+          <div class="stage-badge" id="stageBadge"><span class="badge-dot"></span> FOLDER ORIGINAL</div>
+          <div class="media-box">
+            <img id="stageImg" alt="Folder do evento" src="./assets/01-whey-protein.png" draggable="false">
+            <video id="stageVideo" playsinline preload="metadata" muted controls poster="./assets/07-video-cerebro-poster.jpg" aria-label="Vídeo de divulgação do evento" hidden></video>
+          </div>
+          <button id="fullPlayBtn" class="full-play" type="button" aria-label="Pausar ou retomar apresentação" title="Pausar ou retomar">❚❚</button>
+          <button id="exitFullBtn" class="exit-fullscreen" type="button" aria-label="Sair da tela cheia" title="Sair da tela cheia">✕ <span>Sair da tela cheia</span></button>
+          <button id="prevBtn" class="stage-arrow arrow-left" type="button" aria-label="Material anterior"><svg viewBox="0 0 24 24"><path d="m14 5-7 7 7 7"/></svg></button>
+          <button id="nextBtn" class="stage-arrow arrow-right" type="button" aria-label="Próximo material"><svg viewBox="0 0 24 24"><path d="m10 5 7 7-7 7"/></svg></button>
+          <span class="stage-hint" id="stageHint">Deslize para navegar <span>↔</span></span>
+        </div>
+        <div class="mobile-navigation" aria-label="Navegação dos folders">
+          <button id="mobilePrev" type="button" aria-label="Mostrar material anterior">← Anterior</button>
+          <span>Deslize para trocar</span>
+          <button id="mobileNext" type="button" aria-label="Mostrar próximo material">Próximo →</button>
+        </div>
+        <div class="progress-track" id="progressTrack" role="progressbar" aria-label="Tempo deste material" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><span class="progress-fill" id="progressFill"></span></div>
+        <div class="viewer-actions">
+          <button class="primary-button" id="playBtn" type="button" aria-pressed="false"><svg id="playIcon" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></svg><span id="playText">Iniciar apresentação</span></button>
+          <div class="action-group">
+            <button id="zoomBtn" type="button" class="soft-button" title="Ampliar o folder"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5M10 7v6M7 10h6"/></svg><span>Ampliar</span></button>
+            <button id="fullBtn" type="button" class="soft-button" title="Exibir em tela cheia"><svg viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg><span>Tela cheia</span></button>
+            <button id="downloadBtn" type="button" class="soft-button" title="Baixar o material atual"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 17v3h16v-3"/></svg><span>Salvar</span></button>
+          </div>
+        </div>
+        <div class="viewer-caption" aria-live="polite"><div class="caption-kicker" id="currentType">FOLDER 01 DE 06</div><p id="currentDescription">Descubra como as proteínas fornecem aminoácidos que ajudam na construção e recuperação dos músculos.</p></div>
+      </section>
+      <aside class="side-panel" aria-label="Opções e informações da apresentação">
+        <section class="side-card controls-card">
+          <div class="section-heading"><div><p class="section-overline">PERSONALIZE A EXIBIÇÃO</p><h3>Controle da mostra</h3></div><span class="settings-glyph" aria-hidden="true">✦</span></div>
+          <label class="select-label" for="durationSelect">Tempo de cada folder</label>
+          <div class="select-wrap"><select id="durationSelect"><option value="8000">8 segundos</option><option value="12000" selected>12 segundos</option><option value="16000">16 segundos</option><option value="25000">25 segundos</option><option value="40000">40 segundos</option></select><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></div>
+          <label class="switch-row"><span><strong>Incluir os vídeos</strong><small>Reproduzir também os 3 vídeos</small></span><input id="videosToggle" type="checkbox" checked role="switch"><span class="switch-ui" aria-hidden="true"></span></label>
+          <label class="switch-row"><span><strong>Repetir apresentação</strong><small>Recomeçar ao chegar ao final</small></span><input id="loopToggle" type="checkbox" checked role="switch"><span class="switch-ui" aria-hidden="true"></span></label>
+          <label class="switch-row"><span><strong>Som dos vídeos</strong><small>Inicia desligado para facilitar a reprodução</small></span><input id="soundToggle" type="checkbox" role="switch"><span class="switch-ui" aria-hidden="true"></span></label>
+          <p class="controls-tip"><svg viewBox="0 0 24 24"><path d="M9 18h6m-5 3h4M8 14a7 7 0 1 1 8 0c-1 .8-1 2-1 2H9s0-1.2-1-2Z"/></svg>Ideal para TV, recepção, estande, projetor e redes sociais.</p>
+        </section>
+        <section class="side-card next-card">
+          <div class="section-heading"><div><p class="section-overline">NA SEQUÊNCIA</p><h3>Próximo material</h3></div></div>
+          <button id="upNextBtn" class="up-next" type="button" title="Abrir próximo material"><span class="up-next-thumb"><img id="upNextImg" src="./assets/02-segundo-cerebro.png" alt="Prévia do próximo material"></span><span class="up-next-copy"><small id="upNextLabel">FOLDER 02</small><strong id="upNextTitle">O segundo cérebro</strong><span>Ver agora <svg viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></span></span></button>
+        </section>
+        <section class="event-card">
+          <p class="event-mini">VOCÊ É NOSSO CONVIDADO!</p>
+          <h3>Ciência, saúde e descobertas para toda a família.</h3>
+          <div class="event-detail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18"/></svg><span><b>8 e 15 de novembro de 2026</b><small>Domingos</small></span></div>
+          <div class="event-detail"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span><b>Das 14h às 17h</b><small>Horário da visitação</small></span></div>
+          <div class="event-detail"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2"/></svg><span><b>MUDI · UEM</b><small>Museu Interdisciplinar, Maringá/PR</small></span></div>
+        </section>
+      </aside>
+    </main>
+    <section class="library" id="library" aria-label="Biblioteca de folders e vídeos">
+      <div class="library-head"><div><p class="section-overline">TODOS OS CONTEÚDOS</p><h2>Explore a coleção <span>✳</span></h2></div><span class="library-instruction">Selecione um material para abrir</span></div>
+      <div class="filter-bar" role="group" aria-label="Filtrar materiais"><button type="button" class="filter is-selected" data-filter="all" aria-pressed="true">Todos <span>9</span></button><button type="button" class="filter" data-filter="poster" aria-pressed="false">Folders <span>6</span></button><button type="button" class="filter" data-filter="video" aria-pressed="false">Vídeos <span>3</span></button></div>
+      <div id="mediaLibrary" class="media-library"></div>
+    </section>
+    <footer class="footer"><span><span class="footer-mark">✳</span> MUDI · Universidade Estadual de Maringá</span><span>A anatomia da vida saudável — Uma substância, muitos caminhos</span></footer>
+  </div>
+  <dialog id="zoomDialog" class="zoom-dialog" aria-label="Visualização ampliada do folder">
+    <div class="zoom-header"><strong id="zoomTitle">Folder ampliado</strong><div class="zoom-tools"><button type="button" id="zoomOut" aria-label="Reduzir imagem" title="Reduzir">−</button><span id="zoomLevel">100%</span><button type="button" id="zoomIn" aria-label="Ampliar imagem" title="Ampliar">+</button><button type="button" id="zoomReset" title="Restaurar imagem">Restaurar</button><button type="button" id="zoomClose" title="Fechar" aria-label="Fechar ampliação">✕</button></div></div>
+    <div class="zoom-canvas" id="zoomCanvas"><img id="zoomImage" alt="Folder ampliado; use os botões para alterar o zoom" draggable="false"></div>
+    <p class="zoom-help">Use dois dedos para aproximar ou a roda do mouse para ampliar. Arraste para explorar a imagem.</p>
+  </dialog>
+  <dialog id="helpDialog" class="help-dialog"><div class="help-content"><button type="button" id="helpClose" class="help-close" aria-label="Fechar">✕</button><span class="help-icon">✳</span><h2>Instale o MUDI em Movimento</h2><p>Abra este aplicativo pelo navegador e adicione à tela inicial para utilizá-lo como um app.</p><div id="helpSteps"></div><button type="button" class="primary-button" id="helpOk">Entendi</button></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
